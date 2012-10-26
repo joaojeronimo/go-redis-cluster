@@ -100,7 +100,7 @@ func (cc *Cluster) AsyncCall(command string, args ...interface{}) (future redis.
 	var slots SlotInterval
 	for i := 0; i < len(cc.nodes); i++ {
 		slots = cc.nodes[i].Slots
-		if slot >= slots.LowerLimit && slot =< slots.UpperLimit {
+		if slot >= slots.LowerLimit && slot <= slots.UpperLimit {
 			future = cc.nodes[i].Client.AsyncCall(command, args...)
 			return
 		}
