@@ -21,6 +21,7 @@ func ParseNode(unparsedNode string) (node Node) {
 	node.Name = parts[0]
 	node.Address = parts[1]
 	node.Flags = parts[2]
+	println(node.Flags)
 	//node.LastPingSent, _ = strconv.Atoi(parts[4])
 	//node.LastPongReceived, _ = strconv.Atoi(parts[5])
 	node.State = parts[6]
@@ -66,7 +67,7 @@ func discoverNodes(firstLink string) (cluster Cluster) {
 	var parsedNodes []Node
 	for i := 0; i < len(unparsedNodes)-1; i++ { // -1 because the last line is empty
 		parsedNode := ParseNode(unparsedNodes[i])
-		if parsedNode.Address == ":0" {
+		if parsedNode.Flags == "myself" {
 			parsedNode.Address = firstLink
 			parsedNode.Client = c
 		} else {
