@@ -21,7 +21,6 @@ func ParseNode(unparsedNode string) (node Node) {
 	node.Name = parts[0]
 	node.Address = parts[1]
 	node.Flags = parts[2]
-	println(node.Flags)
 	//node.LastPingSent, _ = strconv.Atoi(parts[4])
 	//node.LastPongReceived, _ = strconv.Atoi(parts[5])
 	node.State = parts[6]
